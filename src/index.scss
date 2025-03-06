@@ -1,3 +1,39 @@
-h1 {
+body {
+  padding: 0px;
+  margin: 0px;
+  width: calc(100vw - 7px);
+}
+
+h1,
+h2,
+h3 {
   color: #06b6d4;
+}
+
+.word-break {
+  word-break: break-all;
+}
+
+.border-box {
+  box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #06b6d4;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
 }
