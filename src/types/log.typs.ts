@@ -3,7 +3,7 @@ export interface TLog {
   topics: Topic[];
 }
 
-interface Topic {
+export interface Topic {
   topicName: string;
   topicType: string;
   frequency: null | number;

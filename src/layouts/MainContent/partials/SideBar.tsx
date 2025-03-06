@@ -31,7 +31,7 @@ export default function SideBar() {
                                 const obj = sessionInfo[k as TkeySessionInfo];
                                 return <div key={k} className='w-6 p-2 border-box'>
                                     <h4>{k}</h4>
-                                    <p className='text-xs word-break'>{typeof obj === "object" ? "Object" : obj}</p>
+                                    <p className='text-xs word-break'>{typeof obj === "object" ? "[ Object ]" : obj ?? '-'}</p>
                                 </div>
                             })
                         }
@@ -50,7 +50,7 @@ export default function SideBar() {
                             Object.keys(botInfo).map((k) => {
                                 return <div key={k} className='w-6 p-2 border-box'>
                                     <h4>{k}</h4>
-                                    <p className='text-xs word-break'>{botInfo[k as TkeyBotInfo]}</p>
+                                    <p className='text-xs word-break'>{botInfo[k as TkeyBotInfo] ?? '-'}</p>
                                 </div>
                             })
                         }

@@ -21,6 +21,7 @@ export default function Header() {
 
   return <>
     <Toolbar
+      className='p-3'
       start={
         <>
           <img src='logo.webp' className='h-2rem pr-2' />
