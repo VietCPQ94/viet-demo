@@ -40,7 +40,7 @@ interface Data18 {
   poses: Data4[];
 }
 
-interface Data16 {
+export interface Data16 {
   header: Header;
   level: number;
   name: string;

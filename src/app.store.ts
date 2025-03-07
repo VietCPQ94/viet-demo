@@ -1,5 +1,5 @@
 import { signify } from "react-signify";
-import { TLog } from "./types/log.typs";
+import { TLog } from "./types/log.type";
 
 type TMainStore = {
   loaderStatus: "INIT" | "OPEN" | "CLOSE";

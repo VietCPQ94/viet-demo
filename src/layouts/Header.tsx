@@ -3,6 +3,7 @@ import { Toolbar } from 'primereact/toolbar';
 import { useEffect, useState } from 'react';
 import { sLog, sMain } from '../app.store';
 import ionReaderDialog from '../utils/ionReaderDialog';
+import { sCam } from './MainContent/mainContent.store';
 
 export default function Header() {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -11,6 +12,7 @@ export default function Header() {
 
     ionReaderDialog((obj) => {
       sLog.set(n => n.value.info = obj);
+      sCam.set(n => n.value.topicLog = obj.topics.find(n => n.topicName === "/rosout_agg"))
       setIsProcessing(false)
     }, () => setIsProcessing(false))
   }

@@ -17,21 +17,21 @@ function CameraPlayer() {
 
   const handlePlay = () => {
     if (!sCam.value.isRuning) {
-      sCam.set(n => n.value.isRuning = true)
+      sCam.set(n => {
+        n.value.isRuning = true
+        if (n.value.time >= totalTime) {
+          n.value.time = 0;
+        }
+      })
       refTime.current = setInterval(() => {
         sCam.set(n => {
           if (!n.value.isDrag) {
             n.value.time += 100 * n.value.speed;
           }
 
-          if (n.value.topic) {
-            n.value.timestamp = n.value.topic.messages[0].timestamp + n.value.time;
-          }
-
           if (sLog.value.info) {
             if (n.value.time >= sLog.value.info.metadata.sessionInfo.duration) {
               clearInterval(refTime.current);
-              n.value.time = 0;
               n.value.isRuning = false;
             }
           }

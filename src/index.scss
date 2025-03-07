@@ -18,6 +18,10 @@ h3 {
   box-sizing: border-box;
 }
 
+.break-spaces {
+  white-space: break-spaces;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 7px;

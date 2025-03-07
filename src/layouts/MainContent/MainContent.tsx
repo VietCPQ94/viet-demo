@@ -1,7 +1,8 @@
 import { sLog } from '@/app.store';
 import './mainContent.scss';
-import SideBar from './partials/SideBar';
 import CameraFeed from './partials/CameraFeed';
+import LogConsole from './partials/LogConsole';
+import SideBar from './partials/SideBar';
 import Topics from './partials/Topics';
 
 export default function MainContent() {
@@ -20,7 +21,10 @@ export default function MainContent() {
             <div className='flex-1'>
                 <h3>Camera Feed</h3>
                 <CameraFeed />
-                <Topics />
+                <div className='flex mt-2 gap-5'>
+                    <Topics />
+                    <LogConsole />
+                </div>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import { load } from "ion-js";
-import { TLog } from "../types/log.typs";
+import { TLog } from "../types/log.type";
 import { sMain } from "@/app.store";
 
 export default (callback: (log: TLog) => void, onFallback: () => void) => {
