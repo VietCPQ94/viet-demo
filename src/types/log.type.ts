@@ -10,7 +10,22 @@ export interface Topic {
   messages: Message[];
 }
 
-interface Message {
+export type ObjPos = {
+  timestamp: number;
+  position: {
+    x: number;
+    y: number;
+    z: number;
+  };
+  rotation: {
+    x: number;
+    y: number;
+    z: number;
+    w: number;
+  };
+};
+
+export interface Message {
   timestamp: number;
   data:
     | Datum
@@ -56,7 +71,7 @@ interface Data15 {
   pose: Pose2;
 }
 
-interface Data14 {
+export interface Data14 {
   header: Header;
   child_frame_id: string;
   pose: Pose2;

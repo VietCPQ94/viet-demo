@@ -1,15 +1,19 @@
+import { sLog } from '@/app.store';
 import { Button } from 'primereact/button';
 import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
 import { memo, useCallback, useRef } from 'react';
+import { Group } from 'three';
+import convertMilliseconds from '../../../utils/convertMilliseconds';
 import { LS_SPEED } from '../constants/speedConfig';
-import { sCam } from '../mainContent.store';
-import convertMilliseconds from '../usecases/convertMilliseconds';
-import { sLog } from '@/app.store';
+import { sCam, sVirtual } from '../mainContent.store';
+import * as THREE from 'three';
+
+const ssTime = sCam.slice(n => n.time);
 
 function CameraPlayer() {
   const totalTime = sLog.use(n => n.info ? n.info.metadata.sessionInfo.duration : 0)
   const config = sCam.use()
-  const refTime = useRef<NodeJS.Timeout>();
+  const refTime = useRef<NodeJS.Timeout>(undefined);
 
   const handleChangeSpeed = useCallback((event: DropdownChangeEvent) => {
     sCam.set(n => n.value.speed = event.value)
@@ -23,6 +27,7 @@ function CameraPlayer() {
           n.value.time = 0;
         }
       })
+
       refTime.current = setInterval(() => {
         sCam.set(n => {
           if (!n.value.isDrag) {
@@ -43,8 +48,20 @@ function CameraPlayer() {
     }
   }
 
+  ssTime.watch(time => {
+    const { model, positions } = sVirtual.value;
+    if (model instanceof Group && positions[time / 100]) {
+      const pos = positions[time / 100].position;
+      const rota = positions[time / 100].rotation;
+
+      const quaternion = new THREE.Quaternion(rota.x, rota.y, rota.z, rota.w);
+      model.quaternion.copy(quaternion);
+      model.position.set(pos.x, pos.y, pos.z)
+    }
+  })
+
   return (
-    <div className="flex gap-2 align-items-center mt-2">
+    <div className="flex gap-2 align-items-center mb-2">
       <Button outlined icon={config.isRuning ? "pi pi-pause" : "pi pi-play"} size="small" onClick={handlePlay} />
       <span className='w-6rem text-text-center'>{convertMilliseconds(config.time)}</span>
       <input
@@ -54,7 +71,7 @@ function CameraPlayer() {
         max={totalTime}
         step={100}
         value={config.time}
-        onChange={e => sCam.set(n => n.value.time = Number(e.target.value))}
+        onChange={(e) => sCam.set(n => n.value.time = Number(e.target.value))}
         onMouseDown={() => sCam.set(n => n.value.isDrag = true)}
         onMouseUp={() => sCam.set(n => n.value.isDrag = false)}
       />

@@ -1,4 +1,4 @@
-import { Topic } from "@/types/log.type";
+import { ObjPos, Topic } from "@/types/log.type";
 import { signify } from "react-signify";
 
 interface TsCam {
@@ -13,6 +13,15 @@ interface TsCam {
   }[];
   isDrag: boolean;
 }
+
+interface TsVirtual {
+  model?: object;
+  positions: ObjPos[];
+}
+
+export const sVirtual = signify<TsVirtual>({
+  positions: [],
+});
 
 export const sCam = signify<TsCam>({
   time: 0,

@@ -5,7 +5,7 @@ import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { useState } from 'react';
 import { sCam } from '../mainContent.store';
-import convertMilliseconds from '../usecases/convertMilliseconds';
+import convertMilliseconds from '../../../utils/convertMilliseconds';
 
 export default function LogConsole() {
     const [search, setSearch] = useState('');

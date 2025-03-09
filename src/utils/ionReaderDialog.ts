@@ -1,6 +1,6 @@
+import { sMain } from "@/app.store";
 import { load } from "ion-js";
 import { TLog } from "../types/log.type";
-import { sMain } from "@/app.store";
 
 export default (callback: (log: TLog) => void, onFallback: () => void) => {
   const input: HTMLInputElement = document.createElement("input");

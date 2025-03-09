@@ -14,11 +14,11 @@ export default function MainContent() {
 
     return (
         <div className='mainContent flex mt-4 gap-4 flex-wrap-reverse'>
-            <div className='w-full xl:w-30rem '>
+            <div style={{ flexBasis: "30rem" }}>
                 <h3>Information</h3>
                 <SideBar />
             </div>
-            <div className='flex-1'>
+            <div className='flex-1 w-full'>
                 <h3>Camera Feed</h3>
                 <CameraFeed />
                 <div className='flex mt-2 gap-5'>

@@ -1,4 +1,4 @@
-export default function convertMilliseconds(ms: number) {
+export default (ms: number) => {
   ms = Math.round(ms);
   const minutes = Math.floor(ms / 60000);
   const seconds = Math.floor((ms % 60000) / 1000);
@@ -8,4 +8,4 @@ export default function convertMilliseconds(ms: number) {
     2,
     "0"
   )}.${String(milliseconds).padStart(3, "0")}`;
-}
+};

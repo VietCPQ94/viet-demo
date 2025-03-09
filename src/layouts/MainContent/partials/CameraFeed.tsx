@@ -1,5 +1,6 @@
 import { sCam } from "../mainContent.store";
 import CameraPlayer from "./CameraPlayer";
+import VirtualPlace from "./VirtualPlace";
 
 
 export default function CameraFeed() {
@@ -13,10 +14,11 @@ export default function CameraFeed() {
 
     return (
         <div>
+            <CameraPlayer />
             {
                 lsImg?.map((n, i) => <img key={i} className='mainContent_img-log' style={{ width: imageidx === i ? "100%" : 0 }} src={n.source} alt="Image" />)
             }
-            <CameraPlayer />
+            <VirtualPlace />
         </div>
     )
 }
