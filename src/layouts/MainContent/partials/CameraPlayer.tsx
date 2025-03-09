@@ -1,19 +1,17 @@
 import { sLog } from '@/app.store';
+import convertMilliseconds from '@/utils/convertMilliseconds';
 import { Button } from 'primereact/button';
 import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
-import { memo, useCallback, useRef } from 'react';
-import { Group } from 'three';
-import convertMilliseconds from '../../../utils/convertMilliseconds';
+import { memo, useCallback } from 'react';
+import { Group, Quaternion } from 'three';
 import { LS_SPEED } from '../constants/speedConfig';
-import { sCam, sVirtual } from '../mainContent.store';
-import * as THREE from 'three';
+import { sCam, sTimer, sVirtual } from '../mainContent.store';
 
 const ssTime = sCam.slice(n => n.time);
 
 function CameraPlayer() {
   const totalTime = sLog.use(n => n.info ? n.info.metadata.sessionInfo.duration : 0)
   const config = sCam.use()
-  const refTime = useRef<NodeJS.Timeout>(undefined);
 
   const handleChangeSpeed = useCallback((event: DropdownChangeEvent) => {
     sCam.set(n => n.value.speed = event.value)
@@ -28,7 +26,7 @@ function CameraPlayer() {
         }
       })
 
-      refTime.current = setInterval(() => {
+      sTimer.set(n => n.value = setInterval(() => {
         sCam.set(n => {
           if (!n.value.isDrag) {
             n.value.time += 100 * n.value.speed;
@@ -36,14 +34,14 @@ function CameraPlayer() {
 
           if (sLog.value.info) {
             if (n.value.time >= sLog.value.info.metadata.sessionInfo.duration) {
-              clearInterval(refTime.current);
+              clearInterval(sTimer.value);
               n.value.isRuning = false;
             }
           }
         })
-      }, 100);
+      }, 100));
     } else {
-      clearInterval(refTime.current);
+      clearInterval(sTimer.value);
       sCam.set(n => n.value.isRuning = false);
     }
   }
@@ -54,7 +52,7 @@ function CameraPlayer() {
       const pos = positions[time / 100].position;
       const rota = positions[time / 100].rotation;
 
-      const quaternion = new THREE.Quaternion(rota.x, rota.y, rota.z, rota.w);
+      const quaternion = new Quaternion(rota.x, rota.y, rota.z, rota.w);
       model.quaternion.copy(quaternion);
       model.position.set(pos.x, pos.y, pos.z)
     }

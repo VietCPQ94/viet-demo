@@ -29,3 +29,5 @@ export const sCam = signify<TsCam>({
   isRuning: false,
   isDrag: false,
 });
+
+export const sTimer = signify<NodeJS.Timeout | undefined>(undefined);

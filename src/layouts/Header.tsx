@@ -3,7 +3,7 @@ import { Toolbar } from 'primereact/toolbar';
 import { useEffect, useState } from 'react';
 import { sLog, sMain } from '../app.store';
 import ionReaderDialog from '../utils/ionReaderDialog';
-import { sCam, sVirtual } from './MainContent/mainContent.store';
+import { sCam, sTimer, sVirtual } from './MainContent/mainContent.store';
 import decodeImage from '../utils/decodeImage';
 import { Data2 } from '@/types/log.type';
 import deccodeObj from '../utils/deccodeObj';
@@ -17,6 +17,8 @@ export default function Header() {
     ionReaderDialog((obj) => {
       sCam.reset();
       sVirtual.reset();
+      clearTimeout(sTimer.value);
+
       setTimeout(() => {
         sLog.set(n => n.value.info = obj);
         sCam.set(n => {
@@ -50,7 +52,7 @@ export default function Header() {
           <h1 className='m-0'>OhmniLabs</h1>
         </>
       }
-      end={<Button label='Upload' onClick={handleGetFile} icon="pi pi-check" loading={isProcessing} />}
+      end={<Button label='Upload' onClick={handleGetFile} icon="pi pi-plus" loading={isProcessing} />}
     />
   </>;
 }
