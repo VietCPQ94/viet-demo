@@ -1,54 +1,36 @@
-# React + TypeScript + Vite
+# OhmniLabs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Log file reader application (\*.ion), used to display information, architecture, and recreate the operation process of the device.
 
-Currently, two official plugins are available:
+# Installation and Launch
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Below is a guide to help you run this project:
 
-## Expanding the ESLint configuration
+## Step 1: Install NodeJS
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Download and install NodeJS using the following link: [NodeJS](https://nodejs.org/en)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Step 2: Set up the environment
+
+1. Open the terminal at the project location.
+2. Run the following command to automatically install the libraries:
+
+```bash
+npm i
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Step 3: Run the project
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Execute the following command in the terminal to start the project:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+# Online Launch
+
+You can also access and use the application without installation by visiting the following link: [Labs](https://labs.nglearns.dev)
+
+# Support
+
+If you encounter any issues, feel free to contact me via email: [congphamquocviet@gmail.com](mailto:congphamquocviet@gmail.com)
