@@ -6,7 +6,11 @@ interface TsCam {
   speed: number;
   isRuning: boolean;
   topic?: Topic;
-  topicLog?: Topic;
+  topicLogs?: Topic;
+  imgLogs?: {
+    timestamp: number;
+    source: string;
+  }[];
   isDrag: boolean;
 }
 

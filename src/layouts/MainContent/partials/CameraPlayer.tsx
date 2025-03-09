@@ -64,4 +64,4 @@ function CameraPlayer() {
   )
 }
 
-export default memo(CameraPlayer)
+export default memo(CameraPlayer, () => true)

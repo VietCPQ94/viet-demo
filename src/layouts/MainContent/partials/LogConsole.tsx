@@ -21,14 +21,14 @@ export default function LogConsole() {
                 {n => (
                     <div className='mt-2 w-full overflow-auto h-30rem border-1 border-300 border-round text-sm border-box p-2'>
                         {
-                            n.topicLog &&
-                            n.topicLog.messages.filter(e =>
+                            n.topicLogs &&
+                            n.topicLogs.messages.filter(e =>
                                 (e.data as Data16).msg.toLowerCase().includes(search.toLowerCase()) &&
-                                e.timestamp <= n.time + (n.topicLog?.messages[0].timestamp ?? 0)
+                                e.timestamp <= n.time + (n.topicLogs?.messages[0].timestamp ?? 0)
                             ).map((e, i) => (
                                 <div className='flex gap-2' key={i}>
                                     <span className='text-xs text-500'>
-                                        [{convertMilliseconds(e.timestamp - (n.topicLog?.messages[0].timestamp ?? 0))}]
+                                        [{convertMilliseconds(e.timestamp - (n.topicLogs?.messages[0].timestamp ?? 0))}]
                                     </span>
                                     <div className='flex-1 flex flex-column'>
                                         {(e.data as Data16).msg.split('\n').map((n, i2) => <p className='mt-0' key={`child${i}-${i2}`}>{n}</p>)}

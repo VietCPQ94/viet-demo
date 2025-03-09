@@ -209,7 +209,7 @@ interface Transform {
   rotation: Orientation;
 }
 
-interface Data2 {
+export interface Data2 {
   header: Header;
   format: string;
   data: string;
